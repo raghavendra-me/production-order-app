@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ProductionOrderComponent } from './production-order/production-order.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [ProductionOrderComponent],
+  template: '<app-production-order></app-production-order>'
 })
-export class AppComponent {
-  title = 'production-order-app';
-}
+export class AppComponent { }

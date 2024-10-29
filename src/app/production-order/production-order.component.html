@@ -1,0 +1,169 @@
+<div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 16px; background-color: #f9fafb;">
+    <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+      <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div>
+            <label for="material">Material</label>
+            <input id="material" [(ngModel)]="formData.material" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+          <div>
+            <label for="productionPlant">Production Plant</label>
+            <input id="productionPlant" [(ngModel)]="formData.productionPlant" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+          <div>
+            <label for="planningPlant">Planning Plant</label>
+            <input id="planningPlant" [(ngModel)]="formData.planningPlant" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+          <div>
+            <label for="orderType">Order Type</label>
+            <input id="orderType" [(ngModel)]="formData.orderType" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+        </div>
+      </div>
+      <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div>
+            <label for="prdOrderRef">Prd order Ref</label>
+            <input id="prdOrderRef" [(ngModel)]="formData.prdOrderRef" placeholder="Sales order reference" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+          <div>
+            <label for="item">Item</label>
+            <input id="item" [(ngModel)]="formData.item" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+          </div>
+          <div style="grid-column: span 2; display: flex; justify-content: flex-end;">
+            <button style="padding: 8px 16px; background-color: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer;">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div style="width: 100%; margin-top: 16px;">
+      <ul style="display: flex; background-color: #f3f4f6; padding: 0; margin: 0; list-style-type: none;">
+        <li (click)="setActiveTab('general')" [style.background-color]="activeTab === 'general' ? '#d1fae5' : 'transparent'" style="padding: 8px 24px; cursor: pointer;">General</li>
+        <li (click)="setActiveTab('operations')" [style.background-color]="activeTab === 'operations' ? '#d1fae5' : 'transparent'" style="padding: 8px 24px; cursor: pointer;">Operations</li>
+        <li (click)="setActiveTab('components')" [style.background-color]="activeTab === 'components' ? '#d1fae5' : 'transparent'" style="padding: 8px 24px; cursor: pointer;">Components</li>
+      </ul>
+  
+      <div *ngIf="activeTab === 'general'" style="margin-top: 16px;">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+          <div style="background-color: #eff6ff; padding: 16px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <h3 style="font-weight: 600; margin-bottom: 16px;">Quantities</h3>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <label for="totalQty">Total Qty</label>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <input id="totalQty" [(ngModel)]="formData.totalQty" style="width: 128px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  <span>KM</span>
+                </div>
+              </div>
+              <div>
+                <label for="delivered">Delivered</label>
+                <input id="delivered" [(ngModel)]="formData.delivered" style="width: 128px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+              </div>
+            </div>
+          </div>
+  
+          <div style="background-color: #eff6ff; padding: 16px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <h3 style="font-weight: 600; margin-bottom: 16px;">Scheduling</h3>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <label for="schedulingType">Type</label>
+                <select id="schedulingType" [(ngModel)]="formData.schedulingType" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  <option>2 Backwards</option>
+                  <option>1 Forwards</option>
+                  <option>3 Forwards/Backwards</option>
+                </select>
+              </div>
+              <div style="background-color: #f9fafb; padding: 8px; border-radius: 4px;">
+                <h4 style="font-weight: 500; margin-bottom: 8px;">Receipt</h4>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <div>
+                    <label for="location">Location</label>
+                    <input id="location" [(ngModel)]="formData.location" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  </div>
+                  <div>
+                    <label for="batch">Batch</label>
+                    <div style="display: flex; gap: 8px;">
+                      <input id="batch" [(ngModel)]="formData.batch" style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                      <button style="padding: 4px 8px; background-color: #e5e7eb; border: none; border-radius: 4px; cursor: pointer;">↓</button>
+                    </div>
+                  </div>
+                  <div>
+                    <label for="stkSeg">Stk Seg.</label>
+                    <input id="stkSeg" [(ngModel)]="formData.stkSeg" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div style="background-color: #eff6ff; padding: 16px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <h3 style="font-weight: 600; margin-bottom: 16px;">Dates/Times</h3>
+            <h4 style="font-weight: 500;">Basic Dates</h4>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <label for="endDate">End</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="date" id="endDate" [(ngModel)]="formData.endDate" style="width: 160px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  <input type="time" id="endTime" [(ngModel)]="formData.endTime" style="width: 96px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+              </div>
+              <div>
+                <label for="startDate">Start</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="date" id="startDate" [(ngModel)]="formData.startDate" style="width: 160px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  <input type="time" id="startTime" [(ngModel)]="formData.startTime" style="width: 96px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+              </div>
+              <div>
+                <label for="releaseDate">Release</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="date" id="releaseDate" [(ngModel)]="formData.releaseDate" style="width: 160px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  <input type="time" id="releaseTime" [(ngModel)]="formData.releaseTime" style="width: 96px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div style="margin-top: 16px;">
+          <div style="background-color: #eff6ff; padding: 16px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <h3 style="font-weight: 600; margin-bottom: 16px;">Sales Order</h3>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <label for="salesOrder">Sales Order</label>
+                <div style="display: flex; gap: 8px;">
+                  <input id="salesOrder" [(ngModel)]="formData.salesOrder" style="width: 128px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  <input id="salesOrderItem" [(ngModel)]="formData.salesOrderItem" style="width: 64px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  <input id="salesOrderSchedule" [(ngModel)]="formData.salesOrderSchedule" style="width: 64px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+              </div>
+              <div>
+                <label for="reqDDate">Req.DDate</label>
+                <input id="reqDDate" [(ngModel)]="formData.reqDDate" type="text" style="width: 128px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+              </div>
+              <div>
+                <label for="orderingParty">Ordering Pty</label>
+                <div style="display: flex; gap: 8px;">
+                  <input id="orderingParty" [(ngModel)]="formData.orderingParty" style="width: 128px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                  <input id="orderingPartyName" [(ngModel)]="formData.orderingPartyName" style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+              </div>
+              <div>
+                <label for="address">Address</label>
+                <input id="address" [(ngModel)]="formData.address" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="activeTab === 'operations'" style="padding: 16px; text-align: center; color: #6b7280;">
+        Operations content would go here
+      </div>
+  
+      <div *ngIf="activeTab === 'components'" style="padding: 16px; text-align: center; color: #6b7280;">
+        Components content would go here
+      </div>
+    </div>
+  </div>
